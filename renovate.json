@@ -1,0 +1,16 @@
+{
+    "extends": ["config:base"],
+    "packageRules": [
+      {
+        "matchDepTypes": ["devDependencies"],
+        "matchUpdateTypes": ["minor", "patch"],
+        "groupName": "minorPatchDevDependencies"
+      },
+      {
+        "matchDepTypes": ["devDependencies"],
+        "matchUpdateTypes": ["major"],
+        "groupName": "majorPatchDevDependencies"
+      }
+    ],
+    "schedule": ["on the first day of the month"]
+  }

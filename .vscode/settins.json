@@ -1,0 +1,34 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+
+    "python.languageServer": "Pylance",
+
+    // Formatar com Black e organizar imports automaticamente
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "88"],
+
+    // Compatibilidade Black-isort
+    "python.sortImports.args": ["-m3", "--tc", "-fgw 0", "--up", "-n", "-l 88"],
+
+    // Compatibilidade Black-Flake8
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--ignore=E203", "--max-line-length=88"],
+
+    "python.linting.pylintEnabled": true,
+
+    "python.linting.pylintArgs": [
+        "--disable=C0114",
+        "--disable=C0115",
+        "--disable=C0116"
+    ]
+}

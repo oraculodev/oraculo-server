@@ -1,0 +1,25 @@
+# main
+Django==3.2.25
+django-extensions==3.1.5
+djangorestframework==3.13.1
+psycopg2-binary==2.9.9
+django-taggit==3.1.0
+coverage==6.5.0
+django-nose==1.4.7
+requests==2.32.2
+django-environ==0.11.2
+logger==1.4
+django-cors-headers==3.14.0
+django-nested-inline==0.4.6
+whitenoise==6.1.0
+gunicorn==22.0.0
+django-tinymce==3.4.0
+django-filter==23.2
+drf-extensions==0.7.1
+gitpython==3.1.43
+django-admin-csvexport==2.2
+
+# celery app
+celery==5.2.7
+redis==4.4.4
+django-celery-beat==2.6.0
