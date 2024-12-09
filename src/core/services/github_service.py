@@ -1,11 +1,8 @@
 import logging
-import os
 
 import requests
-from git import Repo
 
 from core.utils.check_arguments import check_argument_is_not_none_or_empty
-from config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -52,43 +49,3 @@ class GithubService:
             )
 
         return all_repos
-
-    def clone_repo(
-        self,
-        repo_url,
-        repo_dir,
-    ):
-        check_argument_is_not_none_or_empty(repo_url, "repo_url")
-        check_argument_is_not_none_or_empty(repo_dir, "repo_dir")
-
-        # create base folder for clone repos
-        os.makedirs("repos", exist_ok=True)
-
-        if not os.path.exists(repo_dir):
-            print("clonning repo")
-            git_ssh_identity_file = os.path.join(
-                os.getcwd(), self._get_ssh_key_path("id_ed25519")
-            )
-            git_ssh_cmd = "ssh -i %s" % git_ssh_identity_file
-            Repo.clone_from(repo_url, repo_dir, env=dict(GIT_SSH_COMMAND=git_ssh_cmd))
-
-        return None
-
-    def _get_ssh_key_path(self, ssh_key_name):
-        ssh_key = settings.GITHUB["DEPLOY_SSH_KEY"]
-
-        check_argument_is_not_none_or_empty(ssh_key, "ssh_key")
-        check_argument_is_not_none_or_empty(ssh_key_name, "ssh_key_name")
-
-        # create base folder for ssh keys
-        os.makedirs("ssh", exist_ok=True)
-
-        # create ssh key
-        ssh_key_path = os.path.join(os.getcwd(), "ssh", ssh_key_name)
-        with open(ssh_key_path, "w") as f:
-            f.write(ssh_key)
-
-        # set ssh key permissions
-        os.chmod(ssh_key_path, 0o600)
-
-        return ssh_key_path

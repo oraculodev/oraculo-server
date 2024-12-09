@@ -150,7 +150,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = "pt-BR"
+# LANGUAGE_CODE = "pt-BR"
 
 TIME_ZONE = "UTC"
 
@@ -184,13 +184,8 @@ NOSE_ARGS = [
 ]
 
 GITHUB = {
-    "ORG": "BeeTech-global",
+    "ORG": env("GITHUB_API_KEY"),
     "API_KEY": env("GITHUB_API_KEY"),
-    "DEPLOY_SSH_KEY": env.str(
-        "GITHUB_DEPLOY_SSH_KEY",
-        multiline=True,
-        default="",
-    ),
 }
 
 LOGGER_APPS_LEVEL = env("LOG_LEVEL")
