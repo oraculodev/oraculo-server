@@ -2,10 +2,14 @@
 
 from django.db import migrations
 
+from catalog.models.app_climate_score import AppClimateScore
 from catalog.models.resource_type import ResourceType
 from catalog.models.role import Role
 
 
+###
+# RESOURCE TYPES
+###
 default_resource_types = [
     "cache",
     "database",
@@ -17,6 +21,22 @@ default_resource_types = [
     "webhook",
     ]
 
+
+def resource_type_forwards_func(apps, schema_editor):
+    ResourceType.objects.bulk_create(
+        [
+            ResourceType(name=item) for item in default_resource_types
+        ])
+
+
+def resource_type_reverse_func(apps, schema_editor):
+    for resource_type in default_resource_types:
+        ResourceType.objects.filter(name=resource_type).delete()
+
+
+###
+# ROLES
+###
 default_roles = [
     "agilist",
     "database administrator",
@@ -38,28 +58,30 @@ default_roles = [
 ]
 
 
-def resource_type_forwards_func(apps, schema_editor):
-    ResourceType.objects.bulk_create(
-        [
-            ResourceType(name=resource_type) for resource_type in default_resource_types
-        ])
-
-
-def resource_type_reverse_func(apps, schema_editor):
-    for resource_type in default_resource_types:
-        ResourceType.objects.filter(name=resource_type).delete()
-
-
 def role_forwards_func(apps, schema_editor):
     Role.objects.bulk_create(
         [
-            Role(name=resource_type) for resource_type in default_roles
+            Role(name=item) for item in default_roles
         ])
 
 
 def role_reverse_func(apps, schema_editor):
     for role in default_roles:
         Role.objects.filter(name=role).delete()
+
+
+###
+# APP CLIMATE - SCORE
+###
+default_app_climate_score = "Total"
+
+
+def app_climate_score_forwards_func(apps, schema_editor):
+    AppClimateScore.objects.create(name=default_app_climate_score)
+
+
+def app_climate_score_reverse_func(apps, schema_editor):
+    AppClimateScore.objects.filter(name=default_app_climate_score).delete()
 
 
 class Migration(migrations.Migration):
@@ -70,4 +92,5 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(resource_type_forwards_func, resource_type_reverse_func),
         migrations.RunPython(role_forwards_func, role_reverse_func),
+        migrations.RunPython(app_climate_score_forwards_func, app_climate_score_reverse_func),
     ]

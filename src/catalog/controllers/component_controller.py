@@ -1,7 +1,7 @@
 import logging
 
 from django.conf import settings
-from django.db.models import Count, F, Q
+from django.db.models import Count, Q
 
 from catalog.models import AppClimateItem, Component, ComponentAppClimate
 from catalog.models.app_climate_score import AppClimateScore, CalculateAppClimateScore
