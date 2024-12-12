@@ -1,6 +1,6 @@
 # oraculo-server
 
-A system catalog for mapping our services and other information
+A system catalog for mapping your services, teams and other information based on your repos.
 
 ## requirements
 
@@ -21,6 +21,7 @@ for the first time:
 for import github reposositories:
 
 -   configure an env var `GITHUB_API_KEY` for grant access to your github repositories
+-   configure an env var `GITHUB_ORG_NAME` related to your organization
 -   run `docker-compose exec oraculo-api python manage.py import_github_repos`
 
 application urls
