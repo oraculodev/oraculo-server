@@ -85,7 +85,6 @@ class ComponentAdmin(NestedModelAdmin):
         "context_level",
         "critical",
         "custom_tags",
-        "repo_pushed_at",
         "is_filled",
     ]
     list_filter = [
@@ -107,11 +106,9 @@ class ComponentAdmin(NestedModelAdmin):
             {
                 "fields": (
                     "name",
+                    "repo_id",
                     "repo_url",
                     "description",
-                    "repo_created_at",
-                    "repo_updated_at",
-                    "repo_pushed_at",
                     "type",
                     "lifecycle",
                     "macroarea",
@@ -137,13 +134,15 @@ class ComponentAdmin(NestedModelAdmin):
             {"fields": ("components",)},
         ),
     )
-    readonly_fields = [
-        "repo_created_at",
-        "repo_updated_at",
-        "repo_pushed_at",
-        "created_at",
-        "updated_at",
-    ]
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ["created_at",
+                    "updated_at",
+                    "repo_id",]
+        else:
+            return ["created_at",
+                    "updated_at",]
 
     def custom_tags(self, obj):
         return ", ".join(o.name for o in obj.tags.all())
