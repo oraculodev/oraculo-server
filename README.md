@@ -1,6 +1,6 @@
 # oraculo-server
 
-A system catalog for mapping your services, teams and other information based on your repos.
+A system catalog for mapping the organization services, teams and other informations based on your repositories.
 
 ## requirements
 

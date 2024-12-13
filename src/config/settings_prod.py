@@ -13,8 +13,7 @@ DATABASES = {
     }
 }
 
-CORS_ORIGIN_WHITELIST = ("https://oraculodev.com", "https://oraculodev.netlify.app")
-
+# specific for hosting on render
 RENDER_EXTERNAL_HOSTNAME = env("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]

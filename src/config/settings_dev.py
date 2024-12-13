@@ -12,8 +12,3 @@ DATABASES = {
         "PORT": int(env("DB_PORT")),
     }
 }
-
-CORS_ORIGIN_WHITELIST = (
-    "http://localhost:8080",
-    "http://localhost:8081",
-)

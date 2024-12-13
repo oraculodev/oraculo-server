@@ -116,7 +116,7 @@ REST_FRAMEWORK_EXTENSIONS = {
 
 # cors
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = ("http://localhost:8080",)
+CORS_ORIGIN_WHITELIST = env.list("CORS_ORIGIN_WHITELIST")
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
