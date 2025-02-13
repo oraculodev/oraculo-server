@@ -1,6 +1,10 @@
 # oraculo-server
 
-A system catalog for mapping the organization services, teams and other informations based on your repositories.
+## About
+[About](https://oraculodev.com/about)
+
+## License
+This project is licensed under the MIT [LICENSE](License) – see the LICENSE file for details.
 
 ## requirements
 
