@@ -40,3 +40,7 @@ run `docker-compose exec oraculo-api python manage.py makemigrations`
 
 apply migration
 run `docker-compose exec oraculo-api python manage.py migrate`
+
+## add sample data in local ou development environment
+
+run `docker-compose exec oraculo-api python manage.py loaddata sample-data.json`
