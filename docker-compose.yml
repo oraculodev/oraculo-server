@@ -7,7 +7,7 @@ services:
         environment:
             - DJANGO_SETTINGS_MODULE=config.settings_dev
             - SECRET_KEY=changeme
-            - GITHUB_API_KEY=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
+            - GITHUB_API_KEY=changeme
             - LOG_FILE_NAME=oraculo.log
             - LOG_LEVEL=DEBUG
             - DB_DATABASE=oraculo
